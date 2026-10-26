@@ -1,0 +1,45 @@
+{
+  "area": {
+    "name": "uci",
+    "lat": 33.646,
+    "lon": -117.8427,
+    "dist_m": 1500
+  },
+  "segments": {
+    "total_edges": 46128,
+    "total_length_km": 553.71,
+    "pedestrian_ways": 33196,
+    "steps": 572,
+    "steps_length_m": 3136.3,
+    "sidewalks": 11468,
+    "crossings": 1672
+  },
+  "tag_coverage_on_pedestrian_ways": {
+    "surface": {
+      "count": 16864,
+      "percent_of_pedestrian_ways": 51.7
+    },
+    "width": {
+      "count": 492,
+      "percent_of_pedestrian_ways": 1.5
+    },
+    "incline": {
+      "count": 214,
+      "percent_of_pedestrian_ways": 0.7
+    },
+    "wheelchair": {
+      "count": 6,
+      "percent_of_pedestrian_ways": 0.0
+    },
+    "smoothness": {
+      "count": 10,
+      "percent_of_pedestrian_ways": 0.0
+    }
+  },
+  "crossing_nodes": {
+    "total": 451,
+    "with_kerb_tag": 0,
+    "percent_with_kerb_tag": 0.0,
+    "note": "approximate: assumes kerb tags sit on highway=crossing nodes"
+  }
+}
