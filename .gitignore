@@ -22,3 +22,5 @@ backend/data/*.gpkg
 # OS / editor
 .DS_Store
 .vscode/
+# OSMnx download cache
+cache/
