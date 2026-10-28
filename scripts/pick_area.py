@@ -22,7 +22,7 @@ import numpy as np
 import osmnx as ox
 import pandas as pd
 
-from osm_coverage import column, first
+from osm_coverage import column, first, undirected_unique
 
 ROOT = Path(__file__).resolve().parents[1]
 CELL_M = 250      # grid cell size in meters
@@ -67,8 +67,8 @@ def rank_boxes(df: pd.DataFrame, cell: int = CELL_M, box_cells: int = BOX_CELLS,
     cy_min, cy_max = df["cy"].min(), df["cy"].max()
 
     results = []
-    for cx0 in range(cx_min, cx_max - box_cells + 2):
-        for cy0 in range(cy_min, cy_max - box_cells + 2):
+    for cx0 in range(cx_min, max(cx_max - box_cells + 2, cx_min + 1)):
+        for cy0 in range(cy_min, max(cy_max - box_cells + 2, cy_min + 1)):
             window = grid[
                 (grid.index.get_level_values("cx") >= cx0)
                 & (grid.index.get_level_values("cx") < cx0 + box_cells)
@@ -122,9 +122,8 @@ def main() -> None:
     graph_path = ROOT / "backend" / "data" / f"walk_{args.name}.graphml"
     print(f"Loading {graph_path.relative_to(ROOT)} ...")
     graph = ox.load_graphml(graph_path)
-    edges = ox.graph_to_gdfs(graph, nodes=False)
+    edges = undirected_unique(ox.graph_to_gdfs(graph, nodes=False))
     edges = ox.projection.project_gdf(edges)
-
     candidates = rank_boxes(classify_edges(edges))
     rows = []
     for i, c in enumerate(candidates, start=1):

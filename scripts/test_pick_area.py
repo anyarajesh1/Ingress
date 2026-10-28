@@ -32,3 +32,9 @@ def test_top_candidates_do_not_overlap():
         for b in picks[i + 1:]:
             gap = max(abs(a["center_x"] - b["center_x"]), abs(a["center_y"] - b["center_y"]))
             assert gap >= 1000
+
+
+
+def test_area_smaller_than_one_box_still_returns_a_candidate():
+    tiny = pd.DataFrame([{"x": 10.0, "y": 10.0, "steps_m": 5.0, "crossings": 1, "sidewalk_m": 20.0}])
+    assert len(rank_boxes(tiny)) == 1

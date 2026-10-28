@@ -53,3 +53,48 @@ def test_missing_tag_columns_do_not_crash():
     edges = edges.drop(columns=["surface", "incline"])
     cov = compute_stats(nodes, edges, META)["tag_coverage_on_pedestrian_ways"]
     assert cov["surface"]["count"] == 0
+
+
+
+
+def test_crossings_with_kerb_tag_at_an_end():
+    edges = pd.DataFrame(
+        {
+            "highway": ["footway", "footway", "footway"],
+            "footway": ["crossing", "crossing", "sidewalk"],
+            "length": [10.0, 10.0, 10.0],
+        },
+        index=pd.MultiIndex.from_tuples([(1, 2, 0), (3, 4, 0), (2, 3, 0)], names=["u", "v", "key"]),
+    )
+    nodes = pd.DataFrame({"kerb": ["lowered", None, None, None]}, index=pd.Index([1, 2, 3, 4], name="osmid"))
+    result = compute_stats(nodes, edges, META)["crossings_with_kerb_tag"]
+    assert result["total"] == 2
+    assert result["with_kerb_tag_at_an_end"] == 1
+    assert result["percent"] == 50.0
+
+
+def test_list_strings_from_graphml_are_parsed():
+    from osm_coverage import first
+
+    assert first("['steps', 'footway']") == "steps"
+    assert first("footway") == "footway"
+    assert first(None) is None
+
+
+
+def test_each_physical_segment_is_counted_once():
+    from osm_coverage import undirected_unique
+
+    # The same way stored in both directions, plus one separate one-way-only segment.
+    edges = pd.DataFrame(
+        {
+            "highway": ["steps", "steps", "footway"],
+            "osmid": [100, 100, 200],
+            "length": [8.0, 8.0, 50.0],
+        },
+        index=pd.MultiIndex.from_tuples([(1, 2, 0), (2, 1, 0), (3, 4, 0)], names=["u", "v", "key"]),
+    )
+    assert len(undirected_unique(edges)) == 2
+    stats = compute_stats(pd.DataFrame(index=pd.Index([1, 2, 3, 4], name="osmid")), edges, META)
+    assert stats["segments"]["steps"] == 1
+    assert stats["segments"]["steps_length_m"] == 8.0
