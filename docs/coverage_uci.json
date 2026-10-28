@@ -3,43 +3,50 @@
     "name": "uci",
     "lat": 33.646,
     "lon": -117.8427,
-    "dist_m": 1500
+    "dist_m": 1500,
+    "source": "saved graph"
   },
   "segments": {
-    "total_edges": 46128,
-    "total_length_km": 553.71,
-    "pedestrian_ways": 33196,
-    "steps": 572,
-    "steps_length_m": 3136.3,
-    "sidewalks": 11468,
-    "crossings": 1672
+    "total_edges": 23064,
+    "total_length_km": 276.86,
+    "pedestrian_ways": 16598,
+    "steps": 286,
+    "steps_length_m": 1568.1,
+    "sidewalks": 5734,
+    "crossings": 836
   },
   "tag_coverage_on_pedestrian_ways": {
     "surface": {
-      "count": 16864,
+      "count": 8432,
       "percent_of_pedestrian_ways": 51.7
     },
     "width": {
-      "count": 492,
+      "count": 246,
       "percent_of_pedestrian_ways": 1.5
     },
     "incline": {
-      "count": 214,
+      "count": 107,
       "percent_of_pedestrian_ways": 0.7
     },
     "wheelchair": {
-      "count": 6,
+      "count": 3,
       "percent_of_pedestrian_ways": 0.0
     },
     "smoothness": {
-      "count": 10,
+      "count": 5,
       "percent_of_pedestrian_ways": 0.0
     }
+  },
+  "crossings_with_kerb_tag": {
+    "total": 836,
+    "with_kerb_tag_at_an_end": 83,
+    "percent": 9.9,
+    "kerb_tagged_nodes_in_network": 76
   },
   "crossing_nodes": {
     "total": 451,
     "with_kerb_tag": 0,
     "percent_with_kerb_tag": 0.0,
-    "note": "approximate: assumes kerb tags sit on highway=crossing nodes"
+    "note": "narrow metric: only kerb tags on nodes that are themselves highway=crossing"
   }
 }
