@@ -17,6 +17,28 @@ Most map apps assume everyone can climb stairs and handle steep slopes. Ingress 
 
 Ingress does not certify ADA compliance. The ADA is a legal standard that cannot be judged from a map tag or a photo. Ingress surfaces accessibility *indicators* and is a planning aid, not a legal or safety tool.
 
+## Findings: how much accessibility data does OpenStreetMap have?
+
+Measured on 25 October 2026 with `scripts/osm_coverage.py` around UCI (3 km × 3 km). Each physical segment is counted once (OSMnx stores walkable segments in both directions, which would double the counts). OpenStreetMap is edited constantly, so these numbers will change.
+
+| Measure | Result |
+|---|---|
+| Walkable network | 23,064 segments, 276.9 km |
+| Sidewalk segments / crossing segments | 5,734 / 836 |
+| Stairs | 286 segments (1.6 km) |
+| Surface tag on pedestrian ways | 51.7% |
+| Width tag | 1.5% |
+| Incline tag | 0.7% |
+| Wheelchair tag | 3 ways |
+| Crossings with a curb-ramp (kerb) tag at an end | 83 of 836 (9.9%) |
+
+A direct query of raw OpenStreetMap for the same area found 86 kerb-tagged features, most marked as lowered (a curb ramp).
+
+**What this means for the design**
+- Slope can't come from map tags, so elevation data supplies it.
+- Surface is usable for penalties, but about half of segments are unknown, so every route reports how much of it relies on missing data.
+- Curb-ramp data exists for about 1 in 10 crossings, and wheelchair tags are nearly absent. The router treats unmapped crossings as "unknown" instead of assuming they are accessible or blocked, and entrance photos plus user corrections are planned to fill gaps.
+
 ## Roadmap
 
 **Phase 1: Routing engine**
