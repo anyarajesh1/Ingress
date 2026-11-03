@@ -39,12 +39,14 @@ A direct query of raw OpenStreetMap for the same area found 86 kerb-tagged featu
 - Surface is usable for penalties, but about half of segments are unknown, so every route reports how much of it relies on missing data.
 - Curb-ramp data exists for about 1 in 10 crossings, and wheelchair tags are nearly absent. The router treats unmapped crossings as "unknown" instead of assuming they are accessible or blocked, and entrance photos plus user corrections are planned to fill gaps.
 
+**Study area:** a 1 km × 1 km box centered on 33.6485, -117.8358 [describe what you see, e.g. "on the east side of campus"], chosen on 2 November 2026 after comparing the two highest-ranked candidates. It contains 109 stair segments (550 m) within 4,847 walkable segments (54.6 km), and 53 of its 245 crossing segments (21.6%) have a curb-ramp tag, compared with none in the other candidate. Surface tags cover 44.8% of pedestrian ways.
+
 ## Roadmap
 
 **Phase 1: Routing engine**
 - [x] Repository, CI, design notes
 - [x] Script to measure OpenStreetMap accessibility tag coverage for a study area
-- [ ] Choose study area from coverage results
+- [x] Choose study area from coverage results
 - [ ] Elevation and per-segment slope
 - [ ] Mobility profiles and difficulty costs
 - [ ] Router with comparison metrics and tests
