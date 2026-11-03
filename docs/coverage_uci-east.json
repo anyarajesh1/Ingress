@@ -1,0 +1,52 @@
+{
+  "area": {
+    "name": "uci-east",
+    "lat": 33.64853,
+    "lon": -117.83578,
+    "dist_m": 500,
+    "source": "overpass download"
+  },
+  "segments": {
+    "total_edges": 4847,
+    "total_length_km": 54.63,
+    "pedestrian_ways": 3577,
+    "steps": 109,
+    "steps_length_m": 550.5,
+    "sidewalks": 976,
+    "crossings": 245
+  },
+  "tag_coverage_on_pedestrian_ways": {
+    "surface": {
+      "count": 1552,
+      "percent_of_pedestrian_ways": 44.8
+    },
+    "width": {
+      "count": 0,
+      "percent_of_pedestrian_ways": 0.0
+    },
+    "incline": {
+      "count": 10,
+      "percent_of_pedestrian_ways": 0.3
+    },
+    "wheelchair": {
+      "count": 1,
+      "percent_of_pedestrian_ways": 0.0
+    },
+    "smoothness": {
+      "count": 0,
+      "percent_of_pedestrian_ways": 0.0
+    }
+  },
+  "crossings_with_kerb_tag": {
+    "total": 245,
+    "with_kerb_tag_at_an_end": 53,
+    "percent": 21.6,
+    "kerb_tagged_nodes_in_network": 48
+  },
+  "crossing_nodes": {
+    "total": 132,
+    "with_kerb_tag": 0,
+    "percent_with_kerb_tag": 0.0,
+    "note": "narrow metric: only kerb tags on nodes that are themselves highway=crossing"
+  }
+}

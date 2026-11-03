@@ -1,0 +1,52 @@
+{
+  "area": {
+    "name": "uci-central",
+    "lat": 33.6462,
+    "lon": -117.84654,
+    "dist_m": 500,
+    "source": "saved graph"
+  },
+  "segments": {
+    "total_edges": 3534,
+    "total_length_km": 37.92,
+    "pedestrian_ways": 2714,
+    "steps": 94,
+    "steps_length_m": 522.3,
+    "sidewalks": 663,
+    "crossings": 79
+  },
+  "tag_coverage_on_pedestrian_ways": {
+    "surface": {
+      "count": 1645,
+      "percent_of_pedestrian_ways": 62.8
+    },
+    "width": {
+      "count": 0,
+      "percent_of_pedestrian_ways": 0.0
+    },
+    "incline": {
+      "count": 13,
+      "percent_of_pedestrian_ways": 0.5
+    },
+    "wheelchair": {
+      "count": 0,
+      "percent_of_pedestrian_ways": 0.0
+    },
+    "smoothness": {
+      "count": 0,
+      "percent_of_pedestrian_ways": 0.0
+    }
+  },
+  "crossings_with_kerb_tag": {
+    "total": 79,
+    "with_kerb_tag_at_an_end": 0,
+    "percent": 0.0,
+    "kerb_tagged_nodes_in_network": 0
+  },
+  "crossing_nodes": {
+    "total": 38,
+    "with_kerb_tag": 0,
+    "percent_with_kerb_tag": 0.0,
+    "note": "narrow metric: only kerb tags on nodes that are themselves highway=crossing"
+  }
+}

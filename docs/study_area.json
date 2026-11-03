@@ -1,0 +1,13 @@
+{
+  "name": "uci-core",
+  "lat": 33.64853,
+  "lon": -117.83578,
+  "half_width_m": 500,
+  "chosen_on": "2026-11-02",
+  "basis": "stairs length, crossings and sidewalk length (elevation not yet considered)",
+  "stats": {
+    "steps_m": 558.6,
+    "crossings": 245,
+    "sidewalk_km": 12.51
+  }
+}
