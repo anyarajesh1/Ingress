@@ -41,13 +41,33 @@ A direct query of raw OpenStreetMap for the same area found 86 kerb-tagged featu
 
 **Study area:** a 1 km × 1 km box centered on 33.6485, -117.8358 [describe what you see, e.g. "on the east side of campus"], chosen on 2 November 2026 after comparing the two highest-ranked candidates. It contains 109 stair segments (550 m) within 4,847 walkable segments (54.6 km), and 53 of its 245 crossing segments (21.6%) have a curb-ramp tag, compared with none in the other candidate. Surface tags cover 44.8% of pedestrian ways.
 
+## Findings: elevation and slope
+
+Computed on [built_on date] for the study area using a 1 m USGS 3DEP elevation model.
+
+| Measure | Result |
+|---|---|
+| Elevation range | 10.0 to 41.2 m (31.3 m relief) |
+| Path segments | 2,180 (54.6 km) after merging adjacent pieces of the same path; 94 are stairs |
+| Segments with a trusted slope | 1,517 (the rest are stairs or shorter than 8 m) |
+| Median / 90th percentile slope | 1.3% / 4.7% |
+| Steeper than 5% (1:20) | 8.0% of segments, 6.3% of length |
+| Steeper than 8.33% (1:12) | 1.8% of segments, 0.9% of length |
+
+![Slope map](docs/img/slope_map_uci-east.png)
+
+**What this means for the design**
+- The area is mostly gentle, with steep stretches concentrated in a small number of segments, so slope matters for specific routes. Stairs and curb-ramp gaps add other barriers for the router to avoid.
+- Segments under 8 m (about 27% of non-stair segments) have unreliable slopes and are treated as unknown, and each route reports how much of it relies on unknown slope.
+- Limitation: a bare-earth elevation model cannot see bridges or stair heights, and slopes are averaged over each segment, so short steep stretches may be hidden.
+
 ## Roadmap
 
 **Phase 1: Routing engine**
 - [x] Repository, CI, design notes
 - [x] Script to measure OpenStreetMap accessibility tag coverage for a study area
 - [x] Choose study area from coverage results
-- [ ] Elevation and per-segment slope
+- [x] Elevation and per-segment slope
 - [ ] Mobility profiles and difficulty costs
 - [ ] Router with comparison metrics and tests
 
